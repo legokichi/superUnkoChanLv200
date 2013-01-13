@@ -21,12 +21,12 @@ void thinkDraw(){
 
   }else if(state == "trackPole1AndGoal"){ // ポール1とゴールが重なる点へ近づく
     if(feelColors(1, 2, 128, 192)) changeState("trackPole1");
-    else if(checkTimer(2500))      changeState("trackPole1"); // 2.5秒後にポール1のみを追う
+    else if(checkTimer(4000))      changeState("trackPole1"); // 4秒後にポール1のみを追う
     else                           trackColors(1, 2);
 
   }else if(state == "trackPole1"){ // ポール1へ近づく
     if(feelPole(80))          changeState("dribblePole1"); // ポール1をIRで感じられればドリブル
-    else if(checkTimer(4000)) changeState("goBack");       // 4秒経っても見つけられなければ一旦ポール0へ戻る
+    else if(checkTimer(2000)) changeState("goBack");       // 2秒経っても見つけられなければ一旦ポール0へ戻る
     else                      trackColor(1);
 
   }else if(state == "dribblePole1"){ // IRセンサを使ったドリブル行動。願わくばこのままゴール。
