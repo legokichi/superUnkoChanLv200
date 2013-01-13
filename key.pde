@@ -7,14 +7,16 @@ void keyPressed(){
     if(keyCode==DOWN)  move(-p, -p);
   }
   if(key=='0') changeState("wait");
-  if(key=='1') changeState("trackPole");
-  if(key=='3') changeState("avoidPole");
+  if(key=='1') changeState("trackPole0");
+  if(key=='3') changeState("avoidPole0");
   if(key=='4') changeState("goForward");
-  if(key=='5') changeState("turnFast");
-  if(key=='6') changeState("seekTheOtherPole");
-  if(key=='7') changeState("trackTheOtherPole");
+  if(key=='5') changeState("truckPole1");
+  if(key=='6') changeState("dribblePole1");
+  if(key=='7') changeState("goBack");
   if(key=='8') changeState("dribblePole");
-  if(key=='9') changeState("test");
+  if(key=='9') changeState("backToPole0");
+  if(key=='-') changeState("goalAlone");
+  if(key=='^') changeState("test");
   if(key=='q') colorN = 0;
   if(key=='w') colorN = 1;
   if(key=='e') colorN = 2;
