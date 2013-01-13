@@ -8,6 +8,7 @@ void behaveSetup(){
 void changeState(String str){
   state = str;
   println("state: " + state);
+  playSong();
   timer = millis();
 }
 

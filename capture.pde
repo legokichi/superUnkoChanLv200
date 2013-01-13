@@ -7,24 +7,24 @@ int X_ichi = -1;
 int X_size = 0;
 
 void captureSetup() {  
-  capture = new Capture(this, width, height, 30);
+  capture = new Capture(this, width, height);
+  capture.start();
 }
 
 void captureDraw(){
-  image(capture, 0, 0);
-  detectColor(colors[colorN]);
-  fill(colors[0]);
-  rect(0, 0, 10, 10);
-  fill(colors[1]);
-  rect(10, 0, 10, 10);
-  fill(colors[2]);
-  rect(20, 0, 10, 10);
-  fill(colors[colorN]);
-  rect(0, 10, 10, 10);
-}
-
-void captureEvent(Capture capture){
-  capture.read();
+  if(capture.available()){
+    capture.read();
+    image(capture, 0, 0, width, height);
+    detectColor(colors[colorN]);
+    fill(colors[0]);
+    rect(0, 0, 10, 10);
+    fill(colors[1]);
+    rect(10, 0, 10, 10);
+    fill(colors[2]);
+    rect(20, 0, 10, 10);
+    fill(colors[colorN]);
+    rect(0, 10, 10, 10);
+  }
 }
 
 void mousePressed(){
@@ -63,9 +63,10 @@ void detectColor(color clr){
     int y = (ymin+ymax) / 2;
     X_ichi = x;
     X_size = xmax-xmin;
-    fill(color(255, 0, 0));
+    noFill();
+    stroke(255,0,0);
+    rect(xmin, ymin, xmax-xmin, ymax-ymin);
+    fill(255,0,0);
     ellipse(x, y, 20, 20);
-    fill(color(255, 0, 0));
-    rect(0, 0, 10, 10);
   }
 }
