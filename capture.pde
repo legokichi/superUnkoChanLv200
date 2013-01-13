@@ -2,8 +2,7 @@ Capture capture;
 
 color colors[] = {color(255,0,0), color(0,255,0), color(0,0,255)};
 int colorN = 0;
-
-int X_ichi = -1;
+int X_ichi = 0;
 int X_size = 0;
 
 void captureSetup() {  
@@ -39,7 +38,7 @@ void changeDetectColor(int n){
   }
 }
 
-void detectColor(color clr){
+int detectColor(color clr){
   boolean detection = false;
   int xmin = width;
   int xmax = 0;
@@ -69,4 +68,5 @@ void detectColor(color clr){
     fill(255,0,0);
     ellipse(x, y, 20, 20);
   }
+  return X_ichi;
 }

@@ -2,6 +2,7 @@ void thinkDraw(){
   if(state == "test"){
     println(lbump_L+","+lbump_FL+","+lbump_CL+","+lbump_CR+","+lbump_FR+","+lbump_R);
     println(feelPole(80));
+    println(feelColors(1, 2, 128, 192));
 
   }else if(state == "wait"){
     move(0, 0);
@@ -15,12 +16,17 @@ void thinkDraw(){
     else                     move(63, -63);
 
   }else if(state == "goForward"){ // 3.7秒前進
-    if(checkTimer(3700)) changeState("trackPole1");
+    if(checkTimer(3700)) changeState("trackPole1AndGoal");
     else                 move(255, 255);
+
+  }else if(state == "trackPole1AndGoal"){ // ポール1とゴールが重なる点へ近づく
+    if(feelColors(1, 2, 128, 192)) changeState("trackPole1");
+    else if(checkTimer(2500))      changeState("trackPole1"); // 2.5秒後にポール1のみを追う
+    else                           trackColors(1, 2);
 
   }else if(state == "trackPole1"){ // ポール1へ近づく
     if(feelPole(80))          changeState("dribblePole1"); // ポール1をIRで感じられればドリブル
-    else if(checkTimer(6000)) changeState("goBack");  // 6秒経っても見つけられなければ一旦ポール0へ戻る
+    else if(checkTimer(4000)) changeState("goBack");       // 4秒経っても見つけられなければ一旦ポール0へ戻る
     else                      trackColor(1);
 
   }else if(state == "dribblePole1"){ // IRセンサを使ったドリブル行動。願わくばこのままゴール。

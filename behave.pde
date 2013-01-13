@@ -32,6 +32,26 @@ void trackColor(int n){
   if(256 < X_ichi)                 move( 63, -63);
 }
 
+boolean feelColors(int n, int m, int l, int r){
+  changeDetectColor(n);
+  int X_1 = detectColor(colors[n]);
+  int X_2 = detectColor(colors[m]);
+  int X;
+  if(X_1 > X_2) X = X_1 + abs(X_1-X_2)/2;
+  else          X = X_1 - abs(X_2-X_1)/2;
+  if(l < X && X < r) return true;
+  else               return false;
+}
+
+void trackColors(int n, int m){
+  changeDetectColor(n);
+  int X_1 = detectColor(colors[n]);
+  int X_2 = detectColor(colors[m]);
+  if(X_1 > X_2) X_ichi = X_1 + abs(X_1-X_2)/2;
+  else          X_ichi = X_1 - abs(X_2-X_1)/2;
+  trackColor(n);
+}
+
 boolean feelPole(int depth){
   if(lbump_FL+lbump_CL > depth ||
      lbump_CR+lbump_CL > depth ||
@@ -41,5 +61,5 @@ boolean feelPole(int depth){
 
 void dribble(int fast, int slow){
        if(lbump_FL+lbump_CL > lbump_CR+lbump_FR) move(slow, fast);
-  else if(lbump_FL+lbump_CL < lbump_CR+lbump_FR) move(fast, slow);
+  else if(lbump_FL+lbump_CL < lbump_CR+lbump_FR) move(fast, slow+4);
 }
