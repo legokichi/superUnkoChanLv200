@@ -18,3 +18,11 @@ void move(int l, int r){
   motor_R = r;
   motor_L = l;
 }
+
+void clean(){
+  byte[] a = {
+    byte(128), // START
+    byte(135)  // Clean
+  };
+  serial.write(a);
+}

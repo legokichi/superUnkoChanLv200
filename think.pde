@@ -36,8 +36,12 @@ void thinkDraw(){
     if(checkTimer(6000)) changeState("goalAlone");
     else                 trackColor(0);
 
-  }else if(state == "goalAlone"){ // ゴールへ。
-    trackColor(2);
+  }else if(state == "goalAlone"){ // ゴールへ。15秒後、それでもゴールできない場合はランダムウォークを開始。
+    if(checkTimer(15000)){ changeState("randomClean"); clean();}
+    else                   trackColor(2);
+
+  }else if(state == "randomClean"){ // 15秒間テキトーに掃除して回り、ゴールを探す行動に戻る
+    if(checkTimer(15000)){ changeState("goalAlone"); trackColor(0);}
 
   }else{
     changeState("test");
