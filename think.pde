@@ -23,12 +23,12 @@ void thinkDraw(){
     else if(checkTimer(5000)) changeState("backToPole0");  // 5秒経っても見つけられなければ一旦ポール0へ戻る
     else                      trackColor(1);
 
-  }else if(state == "dribblePole1"){ // IRセンサを使ったドリブル行動
+  }else if(state == "dribblePole1"){ // IRセンサを使ったドリブル行動。願わくばこのままゴール。
     if(!feelPole(80))          changeState("backToPole0"); // ポール1を見失ったら一旦ポール0へ戻る
     else if(checkTimer(10000)) changeState("backToPole0"); // 10秒経ったらに自動的にポール0へ戻る
     else                       dribble(127, 63);
 
-  }else if(state == "backToPole0"){ // ポール0へ4秒戻ってからゴールを目指す
+  }else if(state == "backToPole0"){ // ポール0へ4秒戻ってからゴールを目指す。何か失敗してゴールから外れた時のためのフェイルバック機能。
     if(checkTimer(8000)) changeState("goalAlone");
     else                 trackColor(0);
 
