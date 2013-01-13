@@ -39,5 +39,8 @@ void thinkDraw(){
   }else if(state == "goalAlone"){ // ゴールへ。
     trackColor(2);
 
+  }else{
+    changeState("test");
+
   }
 }
