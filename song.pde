@@ -11,6 +11,6 @@ void playBeep(){
     byte(132), // FULL
     byte(141), // Play
     byte(0)    // Song Number
-  }
+  };
   serial.write(buffer);
 }
