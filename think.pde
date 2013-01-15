@@ -1,8 +1,8 @@
 void thinkDraw(){
   if(state == "test"){
-    //println(lbump_L+","+lbump_FL+","+lbump_CL+","+lbump_CR+","+lbump_FR+","+lbump_R);
-    //println(feelPole(80));
-    trackColors(1, 2);
+    println(lbump_L+","+lbump_FL+","+lbump_CL+","+lbump_CR+","+lbump_FR+","+lbump_R);
+    println(feelPole(80));
+    //trackColors(1, 2);
 
   }else if(state == "wait"){
     move(0, 0);
