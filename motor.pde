@@ -11,6 +11,7 @@ void motorDraw(){
     byte(motor_L>>8),
     byte(motor_L)
   };
+  println(motor_L+", "+motor_R);
   serial.write(a);
 }
 

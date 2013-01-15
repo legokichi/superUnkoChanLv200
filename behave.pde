@@ -32,23 +32,12 @@ void trackColor(int n){
   if(256 < X_ichi)                 move( 63, -63);
 }
 
-boolean feelColors(int n, int m, int l, int r){
-  changeDetectColor(n);
-  int X_1 = detectColor(colors[n]);
-  int X_2 = detectColor(colors[m]);
-  int X;
-  if(X_1 > X_2) X = X_1 + abs(X_1-X_2)/2;
-  else          X = X_1 - abs(X_2-X_1)/2;
-  if(l < X && X < r) return true;
-  else               return false;
-}
-
 void trackColors(int n, int m){
-  changeDetectColor(n);
   int X_1 = detectColor(colors[n]);
   int X_2 = detectColor(colors[m]);
-  if(X_1 > X_2) X_ichi = X_1 + abs(X_1-X_2)/2;
-  else          X_ichi = X_1 - abs(X_2-X_1)/2;
+  if(X_1 > X_2) X_ichi = X_1 + (X_1-X_2)/2;
+  else          X_ichi = X_2 + (X_2-X_1)/2;
+  ellipse(X_ichi, 20, 20, 20);
   trackColor(n);
 }
 
