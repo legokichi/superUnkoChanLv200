@@ -6,7 +6,6 @@ void setup(){
   captureSetup();
   sensorSetup();
   behaveSetup();
-  songSetup();
 }
 
 void draw(){

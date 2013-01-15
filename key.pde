@@ -16,7 +16,7 @@ void keyPressed(){
   if(key=='7') changeState("backToPole0");
   if(key=='8') changeState("goalAlone");
   if(key=='9') changeState("test");
-  if(key=='^') changeState("randomClean");
+  if(key=='c') changeState("randomClean");
   if(key=='q') colorN = 0;
   if(key=='w') colorN = 1;
   if(key=='e') colorN = 2;
